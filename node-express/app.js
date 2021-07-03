@@ -14,7 +14,8 @@ app.get('/', (req, res) => {
     res.send("Hello from my app");
 });
 
+const PORT = process.env.PORT;
 
-app.listen(3000, () => {
-    debug(`Server is started ${chalk.green("3000")}`);
+app.listen(PORT, () => {
+    debug(`Server is started ${chalk.green(PORT)}`);
 });

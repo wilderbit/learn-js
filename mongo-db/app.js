@@ -63,6 +63,8 @@ async function main() {
         const removedItem = await circulationRepo.getById(addedItem._id.toString());
         assert.equal(removedItem, null);
 
+        const avgFinalist = await circulationRepo.averageFinalist();
+        console.log(avgFinalist);
 
     } catch(err) {
         console.log(err);

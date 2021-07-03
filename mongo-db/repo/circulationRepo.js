@@ -122,9 +122,27 @@ function circulationRepo() {
         });
     }
 
+    function averageFinalist() {
+        return new Promise(async (resolve, reject) => {
+            const client = new MongoClient(url);
+            try {
+                await client.connect();
+                const db = client.db(dbName);
+                avg = await db.collection('newspapers')
+                .aggregate([{$group: {
+                    _id: null,
+                    avgFinalists: { $avg: "$Pulitzer Prize Winners and Finalists, 1990-2014"}
+                }}]).toArray();
+                resolve(avg[0].avgFinalists);
+                client.close();
+            } catch(err) {
+                reject(err);
+            }
 
+        });
+    }
 
-    return {loadData, getData, getById, addItem, update, remove}
+    return {loadData, getData, getById, addItem, update, remove, averageFinalist}
 }
 
 module.exports = circulationRepo();

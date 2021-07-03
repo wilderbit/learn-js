@@ -107,7 +107,24 @@ function circulationRepo() {
         });
     }
 
-    return {loadData, getData, getById, addItem, update}
+    function remove(id) {
+        return new Promise(async (resolve, reject) => {
+            const client = new MongoClient(url);
+            try {
+                await client.connect();
+                const db = client.db(dbName);
+                const removed = await db.collection('newspapers').deleteOne({_id: ObjectID(id) });
+                resolve(removed.deletedCount === 1)
+                client.close();
+            } catch(err) {
+                reject(err);
+            }
+        });
+    }
+
+
+
+    return {loadData, getData, getById, addItem, update, remove}
 }
 
 module.exports = circulationRepo();

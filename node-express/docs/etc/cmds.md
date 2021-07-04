@@ -5,3 +5,5 @@
 
 
 Nodemon: npm install nodemon
+
+passport: npm package for user management

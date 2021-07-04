@@ -3,8 +3,7 @@ const chalk = require('chalk');
 const debug = require('debug')('app');
 const morgan = require('morgan');
 const path = require('path');
-const sessionData = require('./src/data/sessions.json')
-const sessionRouter = express.Router();
+const sessionRouter = require('./src/routers/sessionRouter');
 
 
 const app = express();
@@ -12,18 +11,6 @@ app.use(morgan('combined')); // tiny
 app.use(express.static(path.join(__dirname + '/public/')));
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
-
-sessionRouter.route('/')
-    .get((req, res) => {
-        res.render("sessions", { sessions: sessionData, });
-    });
-
-sessionRouter.route('/:sessionID')
-    .get((req, res) => {
-        let id = req.params.sessionID;
-        res.render('session', { session: sessionData[id]})
-    });
-
 
 app.use('/sessions', sessionRouter);
 

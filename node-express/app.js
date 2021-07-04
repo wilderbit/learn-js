@@ -15,12 +15,13 @@ app.set('view engine', 'ejs');
 
 sessionRouter.route('/')
     .get((req, res) => {
-        res.render("session", { sessions: sessionData, });
+        res.render("sessions", { sessions: sessionData, });
     });
 
 sessionRouter.route('/:sessionID')
     .get((req, res) => {
-        res.send("Hello single Sessions")
+        let id = req.params.sessionID;
+        res.render('session', { session: sessionData[id]})
     });
 
 

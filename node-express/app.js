@@ -4,6 +4,7 @@ const debug = require('debug')('app');
 const morgan = require('morgan');
 const path = require('path');
 const sessionRouter = require('./src/routers/sessionRouter');
+const adminRouter = require('./src/routers/adminRouter');
 
 
 const app = express();
@@ -13,6 +14,7 @@ app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
 app.use('/sessions', sessionRouter);
+app.use('/admin', adminRouter);
 
 app.get('/', (req, res) => {
     res.render("index", {"title": "Abrar Khan", "data": ['a', 'b', 'c']});

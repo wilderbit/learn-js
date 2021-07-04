@@ -7,7 +7,7 @@ const sessionRouter = express.Router();
 sessionRouter.route('/')
     .get((req, res) => {
         const url = "mongodb+srv://wilderbit:066WElDrFDMQgJaR@cluster0.szltw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-            const dbName = "globomantics";
+        const dbName = "globomantics";
             (async function mongo() {
                 let client;
                 try {

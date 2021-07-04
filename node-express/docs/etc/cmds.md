@@ -7,3 +7,5 @@
 Nodemon: npm install nodemon
 
 passport: npm package for user management
+cookie-parser: 
+express-session:

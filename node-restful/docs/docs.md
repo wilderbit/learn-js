@@ -13,4 +13,7 @@
 - npm run lint -- --init ["lint": "eslint"]
 - npm run lint ["lint": "eslint ."]
 
-    
+#### Import Book Data
+- Make Sure MongoDb is running
+- run `mongo bookAPI < booksJson.js`
+

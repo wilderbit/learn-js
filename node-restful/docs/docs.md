@@ -17,3 +17,5 @@
 - Make Sure MongoDb is running
 - run `mongo bookAPI < booksJson.js`
 
+#### Mocha package
+Unit testing framework

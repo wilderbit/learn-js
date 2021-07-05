@@ -9,5 +9,8 @@
 5. The Uniform Interface
     - Resources (Nouns)
     
+#### Linter 
+- npm run lint -- --init ["lint": "eslint"]
+- npm run lint ["lint": "eslint ."]
 
     

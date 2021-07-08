@@ -96,3 +96,32 @@ db.newusers.find({}).pretty()
 ```
 db.newusers.insertMany([{"name": "Abrar Khan"}, {"name": "Abrar Tyagi"}])
 ```
+
+
+## Retrieving Objects 
+
+`db.collection.find()`
+
+- Find method supports many query operators to filter data.
+    - Comparison
+    - Logical
+    - Element
+    - Evaluation
+    - Geospatial
+    - Array
+    - Bitwise
+
+- Query Projection
+  - Specifies the fields to return to the document that matches the query filter.
+  - 1 or true means include the field
+  - 0 or false means exclude the field
+
+#### Read Concern
+- Allows to control the consistency and isolation properties of the data read
+  from replica sets and replica sets shards
+  - Local
+  - Available
+  - Majority
+  - Linearizable
+  - Snapshot  
+  

@@ -207,3 +207,8 @@ db.collection.deleteMany({runtime: 25})
 db.collection.remove({runtime: 35}, true ) // remove only single document
 db.collection.remove({runtime: 35}) // Remove all documents
 ```
+
+## SQL or NoSQL
+- Is your data structured or unstructured?
+- What is your scalability strategy for infra?
+- How your devs are comfortable with Object Relational Mapping?

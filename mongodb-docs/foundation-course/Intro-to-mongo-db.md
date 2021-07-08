@@ -84,3 +84,15 @@ db.newusers.insertOne(
     "isManager":false
   })
 ```
+
+#### Find the data
+
+```
+db.newusers.find({}).pretty()
+```
+
+#### Insert Many
+
+```
+db.newusers.insertMany([{"name": "Abrar Khan"}, {"name": "Abrar Tyagi"}])
+```

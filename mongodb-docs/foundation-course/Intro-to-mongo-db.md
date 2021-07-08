@@ -186,3 +186,24 @@ db.movies.updateMany({year: 1988}, {$set: {year: 2025}}, {upsert: true, w: "majo
 ```
 db.movies.replaceOne({runtime: 122, directors: "J. Lee Thompson"}, {runtime: 1122, directors: "J. Lee Thompson", "type" : "movie"})
 ```
+
+#### Delete Operation
+- db.collection.delete()
+- db.collection.deleteMany()
+- db.collection.remove()
+
+- All write operations in MongoDB are atomic on the level of a single document.
+- Delete does not drop indexes. 
+
+```
+db.collection.deleteOne({runtime: 25})
+```
+
+```
+db.collection.deleteMany({runtime: 25})
+```
+
+```
+db.collection.remove({runtime: 35}, true ) // remove only single document
+db.collection.remove({runtime: 35}) // Remove all documents
+```

@@ -143,3 +143,46 @@ db.newusers.insertMany([{"name": "Abrar Khan"}, {"name": "Abrar Tyagi"}])
 7. `db.movies.find({"runtime": 11}, {runtime: 1, title: 1, _id: 1}).limit(10).sort({title: 1, id: -1}).pretty().readConcern('linearizable')`
 8. `db.movies.find({"runtime": 11}, {runtime: 1, title: 1, _id: 1}).limit(10).sort({title: 1, id: -1}).pretty().readConcern('linearizable').maxTimeMS(1000)
    `
+   
+## Updating and Deleting Object
+
+#### Write Concern
+- Level of ack requested from MongoDB for write operations
+  - `w:1` - Ack from primary
+  - `w:0` - No Ack
+  - `w:(n)` - Primary Ack + (n-1) Secondary Ack
+  - `w: majority` - Writing to all members in the cluster
+  - `wtimeout` - Time limit to prevent write operations from blocking infinitely
+    
+#### Update Operation
+- db.collection.updateOne()
+- db.collection.updateMany()
+- db.collection.replaceOne()
+
+#### Things to remember for Update Behaviour
+- Atomic on the level of single document
+- _id field cannot be replaced with different value
+- $set creates field if not already exists
+- upsert: true
+
+#### Update the collection
+
+```
+db.movies.updateOne({"title": {$eq: "Your Friend the Rat"}}, {$set: {"title": "Your New Friend Rat"}})
+```
+
+```
+db.movies.updateOne({"title": {$eq: "Your Friend the Rat"}}, {$set: {"title": "Your New Friend Rat", "year": 2020}})
+```
+
+```
+db.movies.updateMany({year: 1988}, {$set: {year: 2025}})
+```
+
+```
+db.movies.updateMany({year: 1988}, {$set: {year: 2025}}, {upsert: true, w: "majority", wtimeout: 1000})
+```
+
+```
+db.movies.replaceOne({runtime: 122, directors: "J. Lee Thompson"}, {runtime: 1122, directors: "J. Lee Thompson", "type" : "movie"})
+```

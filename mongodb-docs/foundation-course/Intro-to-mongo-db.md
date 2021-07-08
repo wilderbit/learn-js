@@ -125,10 +125,21 @@ db.newusers.insertMany([{"name": "Abrar Khan"}, {"name": "Abrar Tyagi"}])
   - Linearizable
   - Snapshot  
   
-#### Find Queries
+#### Find Queries Compass
 1. `{runtime: {$eq: 11}}` or `{runtime: 11}`
 2. `{runtime: {$gt: 11}}`, `{runtime: {$lt: 11}}`, `{runtime: {$lte: 11}}`
 3. Array Queries `{cast: "Billy Bletcher"}`
 4. Object Queries `{"awards.wins": {$gte: 3}}`
 5. And Query `{$and: [{"runtime": {"$gte": 70}}, {"awards.wins": {$gte: 3}}]}`
 6. Or Query `{$or: [{"runtime": {"$gte": 70}}, {"awards.wins": {$gte: 3}}]}`
+
+#### Find Queries Terminal
+1. `db.movies.find({})` or `db.movies.find({}).pretty()` and type `it` for more documents
+2. `db.movies.find({"runtime": 11}).pretty()`
+3. `db.movies.find({"runtime": 11}).limit(10).pretty()`
+4. `db.movies.find({"runtime": 11}, {runtime: 1, title: 1, _id: 0}).limit(10).pretty()`
+5. `db.movies.find({"runtime": 11}, {runtime: 1, title: 1, _id: 0}).limit(10).sort({title: 1}).pretty()`
+6. `db.movies.find({"runtime": 11}, {runtime: 1, title: 1, _id: 1}).limit(10).sort({title: 1, id: -1}).pretty()`
+7. `db.movies.find({"runtime": 11}, {runtime: 1, title: 1, _id: 1}).limit(10).sort({title: 1, id: -1}).pretty().readConcern('linearizable')`
+8. `db.movies.find({"runtime": 11}, {runtime: 1, title: 1, _id: 1}).limit(10).sort({title: 1, id: -1}).pretty().readConcern('linearizable').maxTimeMS(1000)
+   `

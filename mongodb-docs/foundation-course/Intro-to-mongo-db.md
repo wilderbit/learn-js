@@ -125,3 +125,10 @@ db.newusers.insertMany([{"name": "Abrar Khan"}, {"name": "Abrar Tyagi"}])
   - Linearizable
   - Snapshot  
   
+#### Find Queries
+1. `{runtime: {$eq: 11}}` or `{runtime: 11}`
+2. `{runtime: {$gt: 11}}`, `{runtime: {$lt: 11}}`, `{runtime: {$lte: 11}}`
+3. Array Queries `{cast: "Billy Bletcher"}`
+4. Object Queries `{"awards.wins": {$gte: 3}}`
+5. And Query `{$and: [{"runtime": {"$gte": 70}}, {"awards.wins": {$gte: 3}}]}`
+6. Or Query `{$or: [{"runtime": {"$gte": 70}}, {"awards.wins": {$gte: 3}}]}`

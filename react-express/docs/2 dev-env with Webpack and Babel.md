@@ -19,4 +19,4 @@ Create `.babelrc` file to define how `.jsx` and `ES6` should be handled.
 
 Create `webpack.config.js` file to describe how our app should be bundled
 
-Create stubs for `index.html` and `index.js`, which will form the basis of our app
+Create stubs for `index.html` and `index.jsx`, which will form the basis of our app

@@ -18,7 +18,6 @@ With Virtual DOM -> Update the DOM in most efficient way.
   - Upgrade React when upgrading libraries
   - Upgrade as a team
 - Outdated Resources
-- 
 
 
 

@@ -82,3 +82,36 @@ newValue.splice(1, 1) // start_position and number of element to be deleted
 console.log(newValue)
 newValue.splice(1, 0, 4)
 console.log(newValue)
+
+// Scope and Hoisting
+
+// Global Scope
+let productId = 12345;
+
+const app = {
+  productId: 12345,
+  userName: 'Abrar',
+  orderNumber: 234,
+};
+
+(function f() {
+    console.log(productId);
+})();
+
+// Function Scope
+function funScope() {
+    let productId = 123;
+    console.log(productId);
+}
+
+// var and Hoisting
+console.log("--productIdNew--");
+productIdNew = 123
+console.log(productIdNew);
+var productIdNew = 123
+
+// Undeclared Variables and Strict Mode
+// 'use strict'
+console.log("--productIdNew1--");
+productIdNew1 = 1234 // This will be defined in the window object or global space
+console.log(productIdNew1);

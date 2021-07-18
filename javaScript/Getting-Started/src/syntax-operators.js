@@ -143,3 +143,48 @@ function handleError(error) {
     }
 
 }
+
+
+// How to determine JavaScript Variable Data Types
+console.log("\n\nHow to determine JavaScript Variable Data Types")
+
+// typeof operator
+// Data Type:- boolean, null, undefined, number, string
+// Object Data Types:- new Array, new Error, new Function, new Object, new RegExp, new Boolean, new Number, new String
+
+console.log(typeof "")
+console.log(typeof 4)
+console.log(typeof (4 * 3))
+console.log(typeof {})
+console.log(typeof (new Date()))
+console.log(typeof ([]))
+console.log(typeof null)
+console.log(typeof console.log)
+
+// Constructor Property
+console.log("\nConstructor Property")
+console.log([].constructor.toString())
+console.log((new Date()).constructor.toString())
+console.log(false.constructor.toString())
+console.log(Number(3).constructor.toString())
+
+// instanceof Operator
+console.log("\ninstanceof Operator")
+console.log(new String("instanceof Operator") instanceof String)
+console.log("instanceof Operator" instanceof String) // Primitives are not Objects
+console.log(new Date() instanceof Date)
+console.log(new Date() instanceof Object)
+
+function Product(id, name, number) {
+    this.productID = id;
+    this.name = name;
+    this.number = number;
+}
+
+let product = new Product(1, "Abrar", 12345)
+console.log(product instanceof Product)
+console.log(product instanceof Object)
+
+// Understanding this
+console.log("\n\nUnderstanding this")
+console.log("------------------")

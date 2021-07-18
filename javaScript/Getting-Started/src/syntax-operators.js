@@ -200,3 +200,39 @@ console.log(this.toString())
 // call()/apply() methods refers to object passed in
 // use strict also affects `this`
 // constructor functions owner is `this`
+
+// Spread Operator
+console.log("\n\nSpread Operator")
+console.log("------------------")
+
+let productNumber = "asadfasdfasdf";
+let values = [...productNumber]
+console.log(values)
+
+// Copy an Array
+let arr = [1,2,3]
+let copy_arr = [...arr]
+console.log(copy_arr)
+
+// Copy of an array of Object
+let products = [
+    {
+        name: "asd",
+        age: 122
+    },
+    {
+        name: "asdf",
+        age: 12224325
+    }
+]
+
+let newProduct = [...products] // Shallow Copy
+products[0].name = "afsdfasd"
+console.log(products[0].name)
+console.log(newProduct[0].name)
+
+// Concat two arrays
+let arr1 = [2,234,23,42,3]
+let arr2 = [2,234,23,42,3]
+let arr3 = [...arr1, ...arr2]
+console.log(arr3)

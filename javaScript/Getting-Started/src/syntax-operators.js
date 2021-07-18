@@ -188,3 +188,15 @@ console.log(product instanceof Object)
 // Understanding this
 console.log("\n\nUnderstanding this")
 console.log("------------------")
+
+// this always refers to an object
+
+console.log(this.toString())
+
+// this have different values based on execution context
+// In a method this refers to the owner object
+// In a function: global object
+// In an event: element that received the event
+// call()/apply() methods refers to object passed in
+// use strict also affects `this`
+// constructor functions owner is `this`

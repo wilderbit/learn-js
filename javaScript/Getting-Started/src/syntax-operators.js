@@ -75,3 +75,71 @@ function forOfSample() {
 }
 forOfSample();
 console.log("forOfSampleEnd")
+
+
+// Exception handling
+console.log("\n\ntryAndCatch")
+
+try {
+    let x = 100;
+    let result = x / 10;
+    console.log(result)
+} catch (error) {
+    console.log(error.message)
+} finally {
+    console.log("In the finally block")
+}
+
+// Throw the error
+function throwError() {
+    try {
+        attemptDivision();
+    } catch (error) {
+        console.log(`${error.message} - Error Type: ${error.name}`)
+    }
+}
+
+function attemptDivision() {
+    let result;
+    try {
+        result = x / 10;
+    } catch(error) {
+        console.log(error.message)
+        throw {
+            'message': "In the attemptDivision() method error occurred: " + error.message,
+            'name': "CustomError"
+        }
+    }
+}
+
+throwError();
+
+// Types of Error
+// ReferenceError, RangeError, TypeError, URIError, SyntaxError, EvalError
+
+function handleError(error) {
+    switch (error.name) {
+        case 'ReferenceError':
+            console.log(`Reference error ${error.message}`)
+            break;
+        case 'RangeError':
+            console.log(`Range error ${error.message}`)
+            break;
+        case 'TypeError':
+            console.log(`Type error ${error.message}`)
+            break;
+        case 'URIError':
+            console.log(`URI error ${error.message}`)
+            break;
+        case 'SyntaxError':
+            console.log(`Syntax error ${error.message}`)
+            break;
+        case 'EvalError':
+            console.log(`Eval error ${error.message}`)
+            break;
+        default:
+            console.log(`ErrorType - ${error.name} - ErrorMessage - ${error.message}`)
+            break;
+    }
+
+}

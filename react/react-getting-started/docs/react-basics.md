@@ -57,23 +57,65 @@ Component Improvement
 
 ```jsx
 function Button(props) {
-	return <button onClick={props.onClickHandler}> +1 </button>;
+  const handleClick = () => props.onClickFunction(props.increment);
+  return (
+          <button onClick={handleClick}>
+            +{props.increment}
+          </button>
+  );
 }
 
 function Display(props) {
-  return <div>{props.message}</div>
+  return (
+          <div>{props.message}</div>
+  );
 }
 
-function App(props) {
+function App() {
   const [counter, setCounter] = useState(0);
-  return <div>
-    <Button onClickHandler={() => setCounter(counter + 1)}/>
-    <Display message={counter} />
-  </div>
+  const incrementCounter = (value) => setCounter(counter+value);
+  return (
+          <div>
+            <Button onClickFunction={incrementCounter} increment={1} />
+            <Button onClickFunction={incrementCounter} increment={5} />
+            <Button onClickFunction={incrementCounter} increment={10} />
+            <Button onClickFunction={incrementCounter} increment={100} />
+            <Display message={counter}/>
+          </div>
+  );
 }
 
 ReactDOM.render(
-  <App />,
-  document.getElementById('mountNode'),
+        <App />,
+        document.getElementById('mountNode'),
 );
+```
+
+#### Tree Reconciliation in Action
+
+```jsx
+// https://jscomplete.com/playground/rgs1.7
+function render() {
+
+  document.getElementById('mountNode').innerHTML = `
+    <div>
+      Hello HTML
+      <input />
+      <pre>${(new Date).toLocaleTimeString()}</pre>
+    </div>
+  `;
+
+  ReactDOM.render(
+    React.createElement(
+      'div', 
+      null, 
+      'Hello React',
+      React.createElement('input', null),
+      React.createElement('pre', null, (new Date).toLocaleTimeString()),
+    ),
+    document.getElementById('mountNode2'),
+  );
+}
+
+setInterval(render, 1000);
 ```

@@ -53,3 +53,58 @@ rs.initiate({
 - For Re-config `rs.reconfig(rs.config(),{force:true})` 
 - Use this for read data from secondary node `db.setSecondaryOk()`
 - Use for replica status `rs.status()`
+
+## The Mongo Shell
+- Eval command `mongo localhost/admin --eval "printjson(db.runCommand({logRotate: 1}))"` 
+- We can run scripts as well `mongo userCount.js`
+- 
+
+#### Executing script before enter
+```js
+DB.prototype.dropDatabase = function () {
+    print("Don't do it man!")
+}
+
+db.dropDatabase = DB.prototype.dropDatabase;
+```
+
+Running Script with shell
+```js
+mongo safer.js --shell
+```
+
+#### External Editor
+- Complex scripts can use a big-boy editor.
+- Wire up the shell to use your favorite editor.
+- Set the editor into environment variable into `EDITOR` variable.
+- And the run edit command of inside mongo shell
+```js
+let stuff = function () {}
+edit stuff
+```
+#### Load the script inside the mongo shell
+- `load('safer.js')`
+
+#### User RC file
+- Create `.mongorc.js` file
+- When we run `mongo` this file will get automatically loaded
+- If you don't want to run any RC file then run `mongo --norc`
+
+
+#### Prevent Disaster
+
+Sample `.mongrc.js`
+```js
+
+const _no_ = function () {
+    print("Nope!!!")
+} 
+
+DB.prototype.dropDatabase = _no_;
+db.dropDatabase = db.prototype.dropDatabase;
+
+
+DB.prototype.shutdownServer = _no_;
+db.shutdownServer = db.prototype.shutdownServer;
+
+```

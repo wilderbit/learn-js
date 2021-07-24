@@ -8,6 +8,8 @@
     isAdult: function () { return this.age >= 18}
   }
 
-  display(person.isAdult())
+  // display(person.isAdult())
+
+  // display(Object.keys(person))
 
 })();

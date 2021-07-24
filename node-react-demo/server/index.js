@@ -11,6 +11,9 @@ app.use(express.static(path.resolve(__dirname, '../client/build')));
 app.get("/api", (req, res) => {
     res.json({ data: "Hello from server!" })
 });
+app.get("/api/json", (req, res) => {
+    res.json(data)
+});
 
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));

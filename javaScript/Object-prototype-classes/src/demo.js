@@ -1,15 +1,25 @@
 'use strict'; 
 (function() {
 
-  let person = {
-    firstName: 'Abrar',
-    lastName: 'Khan',
-    age: 29,
-    isAdult: function () { return this.age >= 18}
+  function Person(firstName, lastName, age) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+    this.isAdult = function () { return this.age >= 18 }
   }
 
-  // display(person.isAdult())
+  let person = new Person('Abrar', 'Khan', 27)
 
-  // display(Object.keys(person))
+  let newPerson = Object.create(
+      Object.prototype,
+      {
+        firstName: {value: 'Abrar', enumerable: true, writeable: true, configurable: true},
+        lastName: {value: 'Abrar', enumerable: true, writeable: true, configurable: true},
+        age: {value: 29, enumerable: true, writeable: true, configurable: true},
+      }
+  )
+
+
+  display(newPerson)
 
 })();

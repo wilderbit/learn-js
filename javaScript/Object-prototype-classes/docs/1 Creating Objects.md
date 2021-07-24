@@ -76,3 +76,92 @@ for(let propertyName in person) {
     console.log(propertyName)
 }
 ```
+
+#### JavaScript Object Equality
+- `==` Not Type safe, `"42" == 42`, `0 == false`, `null == undefined`, `"" == 0`, `[1, 2] == "1,2"` 
+- `===` Type-safe, convenient/concise, `NaN is not equal to NaN` `+0 equal to -0`
+- `Object.is()` Type-safe, verbose, `NaN is equal to NaN`, `+0 does not equal to -0`
+- In case of Object equality operators works on address and in case of string literal check the values.
+
+#### Object Assign and Immutability
+
+```js
+let person = {
+    firstName: 'Abrar',
+    lastName: 'Khan',
+    age: 29,
+    isAdult() { return this.age >= 18}
+}
+
+let person2 = {}
+
+Object.assign(person2, person) // person will get copied into person2 Object
+```
+
+#### Merging Objects
+
+
+```js
+let person = {
+    firstName: 'Abrar',
+    lastName: 'Khan',
+    age: 29,
+    isAdult() { return this.age >= 18}
+}
+
+let healthStats = {
+    height: 168,
+    weight: 150,
+}
+
+Object.assign(person, healthStats) // person will get copied into person2 Object
+```
+
+#### Merged with Immutability
+```js
+  let person = {
+    firstName: 'Abrar',
+    lastName: 'Khan',
+    age: 29,
+    isAdult() { return this.age >= 18}
+  }
+
+  let healthStats = {
+    height: 168,
+    weight: 150,
+  }
+
+  function mergedObject(person, healthStats) {
+    return Object.assign({}, person, healthStats)
+  }
+
+  let m = mergedObject(person, healthStats)
+```
+
+#### Constructor Function
+```js
+
+function Person(firstName, lastName, age) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+    this.isAdult = function () { return this.age >= 18 }
+}
+
+let person = new Person('Abrar', 'Khan', 27)
+
+```
+
+#### Object creation using Object.create
+```js
+
+let newPerson = Object.create(
+    Object.prototype,
+    {
+        firstName: {value: 'Abrar', enumerable: true, writeable: true, configurable: true},
+        lastName: {value: 'Abrar', enumerable: true, writeable: true, configurable: true},
+        age: {value: 29, enumerable: true, writeable: true, configurable: true},
+    }
+)
+
+```

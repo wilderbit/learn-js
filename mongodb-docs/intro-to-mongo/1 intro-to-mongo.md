@@ -103,8 +103,26 @@ const _no_ = function () {
 DB.prototype.dropDatabase = _no_;
 db.dropDatabase = db.prototype.dropDatabase;
 
-
 DB.prototype.shutdownServer = _no_;
 db.shutdownServer = db.prototype.shutdownServer;
-
 ```
+
+## Saving Data
+- db.foo.save({})
+- db.foo.insert({})
+- db.foo.find()
+
+#### Update
+- db.foo.update(query, update, options);
+- db.foo.update({_id: 1}, {$inc: {x : 1}})
+- db.foo.update({_id: 1}, {$set: {x : 1}})
+- db.foo.update({_id: 1}, {$unset: {y : ''}})
+- db.foo.update({_id: 1}, {$rename: {y : 'Name'}})
+- db.foo.update({_id: 1}, {$push: {things : 'One'}}) // Add an array into existing Object
+- db.foo.update({_id: 1}, {$addToSet: {things : 'Two'}})
+- db.foo.update({_id: 1}, {$pop: {things : 1}}) // Remove Last element from array
+- db.foo.update({_id: 1}, {$pop: {things : -1}}) // Remove Last element from array
+- db.foo.update({}, {$push: {things : 'One'}}) // Only One will be updated
+- db.foo.update({}, {$push: {things : 'One'}}, {multi: true}) // Multiple will be updated
+- db.foo.update({things: 'One'}, {$push: {things : 'One'}}, {multi: true}) // Only will be updated which contains 'One' in the array
+- db.foo.findAndModify()

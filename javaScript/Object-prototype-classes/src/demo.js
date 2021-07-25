@@ -10,6 +10,11 @@
     let jim = new Person('Jim', 'Cooper')
     let sofia = new Person('Sofia', 'Cooper')
 
+    Person.prototype = {age: 20}; // Create a new Object
+
+    let kris = new Person('Kris', 'Cooper')
+
+    display(kris.age) // 20
     display(jim.age) // 29
     display(sofia.age) // 29
 

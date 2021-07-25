@@ -61,3 +61,33 @@ display(sofia.__proto__ === Person.prototype) // true
 
 ![Prototype](./prototype.png)
 ![Prototype](./prototype2.png)
+
+#### Changing a function prototype
+- If we change the function prototype, so It will create a new object in the memory
+and function prototype points to this new prototype object.
+  
+```js
+    function Person(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    Person.prototype.age = 29;
+    let jim = new Person('Jim', 'Cooper')
+    let sofia = new Person('Sofia', 'Cooper')
+
+    Person.prototype = {age: 20}; // Create a new Object
+
+    let kris = new Person('Kris', 'Cooper')
+
+    display(kris.age) // 20
+    display(jim.age) // 29
+    display(sofia.age) // 29
+    
+    jim.age = 18;
+    display(jim.age) // 18
+    display(jim.__proto__.age) // Still 29
+
+```
+
+![Function Prototype](./function_proto.png)

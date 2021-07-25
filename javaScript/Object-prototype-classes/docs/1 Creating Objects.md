@@ -233,3 +233,63 @@ let person = {
 Object.freeze(person.name)
 person.name.firstName = 'Kris'; // It will throw an error
 ```
+
+- `enumrable` means whether the property will get enumerated or not
+```js
+let person = {
+    firstName: 'Abrar',
+    lastName: 'Khan',
+    age: 29
+}
+
+Object.defineProperty(person, 'firstName', {enumrable: false});
+
+for(let propertyName in person) {
+    console.log(propertyName + ' ' + person[propertyName]) // firstName will get printed
+} 
+
+console.log(Object.keys(person)) // firstName will not show up
+JSON.stringify(person) // firstName will not show up
+
+person.firstName // It will print the value
+
+```
+
+- `configurable` set the property to become configurable or non-configurable.
+```js
+let person = {
+    firstName: 'Abrar',
+    lastName: 'Khan',
+    age: 29
+}
+Object.defineProperty(person, 'firstName', {configurable: false});
+Object.defineProperty(person, 'firstName', {enumrable: false}); // It will throw an error
+Object.defineProperty(person, 'firstName', {configurable: true}); // We can not even do this
+```
+
+- Creating property Getters and Setters
+```js
+
+let person = {
+    name: {
+        firstName: 'Abrar',
+        lastName: 'Khan',  
+    },
+    age: 29
+}
+
+Object.defineProperty(person, 'fullName', {
+    get: function () {
+        return this.name.firstName + ' ' + this.name.lastName;
+    },
+    set: function (value) {
+        let nameParts = value.split(' ');
+        this.name.firstName = nameParts[0];
+        this.name.lastName = nameParts[1];
+    }
+})
+
+console.log(person.fullName) // Abrar Khan
+person.fullName = 'Jim Cooper'
+console.log(person.fullName) // Jim Cooper
+```

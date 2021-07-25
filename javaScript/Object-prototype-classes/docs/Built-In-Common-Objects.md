@@ -1,6 +1,7 @@
 ## Math Object [Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math)
 
 [Global Objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects)
+[Java Script](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide)
 
 ```js
 display(Math.PI)

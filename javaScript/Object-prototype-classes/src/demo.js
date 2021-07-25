@@ -1,51 +1,30 @@
 'use strict'; 
 (function() {
-    class Person {
-        constructor(firstName, lastName, age) {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.age = age;
-        }
+    let date = new Date();
+    let date1 = new Date('2050-03-25T13:01:30Z')
+    let date2 = new Date(2050, 3, 25, 13, 1, 30, 50)
 
-        static adultAge = 18;
+    display(date.toString())
+    display(date.getFullYear())
+    display(date.getMonth()) // Zero Based
+    display(date.getDate())
+    display(date.getDay())
+    display(date.getHours())
+    display(date.getMinutes())
+    display(date.getSeconds())
+    display(date.getMilliseconds())
 
-        get fullName() {
-            return this.firstName + ' ' +  this.lastName;
-        }
+    display(date.toString())
+    display(date.getUTCFullYear())
+    display(date.getUTCMonth()) // Zero Based
+    display(date.getUTCDate())
+    display(date.getUTCDay())
+    display(date.getUTCHours())
+    display(date.getUTCMinutes())
+    display(date.getUTCSeconds())
+    display(date.getUTCMilliseconds())
 
-        set fullName(value) {
-            let nameParts = value.split(' ');
-            this.firstName = nameParts[0]
-            this.lastName = nameParts[1]
-        }
+    let date3 = date2 - date1; // Return Number of millis
+    display(date3)
 
-        isAdult() {
-            return this.age >= 18;
-        }
-    }
-
-    class Student extends Person {
-        constructor(firstName, lastName, age) {
-            super(firstName, lastName, age)
-            this._enrolledCourses = [];
-        }
-
-        enroll(course) {
-            this._enrolledCourses.push(course)
-        }
-
-        getCourses() {
-            return this.fullName + "'s enrolled courses are: " +
-                this._enrolledCourses.join(', ')
-        }
-
-        static fromPerson(person) {
-            return new Student(person.firstName, person.lastName, person.age);
-        }
-    }
-
-    let jim = new Person('Jim', 'Cooper', 29);
-    let jimStudent = Student.fromPerson(jim);
-    display(jimStudent)
-    display(Person.adultAge)
 })();

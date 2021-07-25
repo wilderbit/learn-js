@@ -165,3 +165,71 @@ let newPerson = Object.create(
 )
 
 ```
+
+## JavaScript Object Properties
+- We can use brackets to access the object properties
+```js
+
+let person = {
+    firstName: 'Abrar',
+    lastName: 'Khan',
+    age: 29
+}
+
+for(let propertyName in person) {
+    console.log(propertyName + ' ' + person[propertyName])
+}
+```
+
+- Every property has property descriptor
+
+```js
+
+let person = {
+    firstName: 'Abrar',
+    lastName: 'Khan',
+    age: 29
+}
+
+console.log(Object.getOwnPropertyDescriptor(person, 'firstName'))
+// writable, enumerable, configurable
+```
+
+- `writeable` means whether the property is writeable or not
+
+```js
+let person = {
+    firstName: 'Abrar',
+    lastName: 'Khan',
+    age: 29
+}
+Object.defineProperty(person, 'firstName', {writeable: false})
+person.firstName = 'Kris'; // It will throw an error now
+```
+
+- If we make an object writeable false then we will be able to change it properties 
+```js
+let person = {
+    name: {
+        firstName: 'Abrar',
+        lastName: 'Khan',  
+    },
+    age: 29
+}
+Object.defineProperty(person, 'name', {writeable: false})
+person.name.firstName = 'Kris'; // It will work fine
+```
+
+- Object.freeze() will make object Immutable
+
+```js
+let person = {
+    name: {
+        firstName: 'Abrar',
+        lastName: 'Khan',  
+    },
+    age: 29
+}
+Object.freeze(person.name)
+person.name.firstName = 'Kris'; // It will throw an error
+```

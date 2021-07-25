@@ -41,3 +41,22 @@
     jim.fullName = 'Abrar Khan'
     display(jim.fullName)
 ```
+
+#### Functions in Classes
+
+```js
+    class Person {
+        constructor(firstName, lastName, age) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.age = age;
+        }
+
+        isAdult() {
+            return this.age >= 18;
+        }
+
+    }
+    let jim = new Person('Jim', 'Cooper', 29);
+    display(jim.isAdult())
+```

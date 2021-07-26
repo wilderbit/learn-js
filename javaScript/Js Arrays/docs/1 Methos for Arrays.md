@@ -61,3 +61,22 @@ let category = new WeakSet();
 category.add('Hiking'); // Error because this is not an object
 category.add({category: 'Hiking'});
 ```
+
+## Creating and Using Maps
+
+```js
+const mon = new Map();
+mon.set(1, 2);
+mon.set(2, 3);
+mon.set(3, 4);
+let t = mon.get(2);
+let s = mon.size;
+```
+
+#### Iterating with Map
+
+```js
+const mon = new Map();
+let keys = mon.keys();
+let values = mon.values();
+```

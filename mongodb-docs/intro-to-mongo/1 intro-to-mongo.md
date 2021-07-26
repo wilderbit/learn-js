@@ -126,3 +126,30 @@ db.shutdownServer = db.prototype.shutdownServer;
 - db.foo.update({}, {$push: {things : 'One'}}, {multi: true}) // Multiple will be updated
 - db.foo.update({things: 'One'}, {$push: {things : 'One'}}, {multi: true}) // Only will be updated which contains 'One' in the array
 - db.foo.findAndModify()
+
+#### Finding Documents
+- db.foo.find(query, projection)
+- db.animals.find({_id: 1})
+- db.animals.find({_id: {$gt: 5}})
+- db.animals.find({_id: {$lt: 5}})
+- db.animals.find({_id: {$lte: 5}})
+- db.animals.find({_id: {$lte: 5, $gt: 1}})
+- db.animals.find({_id: {$not: {$lte: 5}}})
+- db.animals.find({_id: {$in: [1, 3]}})
+- db.animals.find({_id: {$nin: [1, 3]}})
+- db.animals.find({"info.canFly": {$exists: true}})
+- db.animals.find({"info.canFly": {$exists: false}})
+- db.animals.find({"info.canFly": null})
+- db.animal.find({tags: 'cute'}, {name: 1, "info.type": 1})
+- var c = db.animal.find({}) // cursor
+- c.size()
+- c.hasNext()
+- c.forEach(d => d.name)
+- db.animal.find({}).sort({name: 1}) // Sorting by name ascending
+- db.animal.find({}).sort({name: 1}) // Sorting by name descending
+- db.animal.find({}).sort({name: 1}).limit(3) // limit
+- db.animal.find({}).sort({name: 1}).limit(3).skip(3) // paging
+- db.animal.findOne() // find One
+
+
+#### Indexing

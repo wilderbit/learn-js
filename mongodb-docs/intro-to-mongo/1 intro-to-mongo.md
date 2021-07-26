@@ -150,6 +150,29 @@ db.shutdownServer = db.prototype.shutdownServer;
 - db.animal.find({}).sort({name: 1}).limit(3) // limit
 - db.animal.find({}).sort({name: 1}).limit(3).skip(3) // paging
 - db.animal.findOne() // find One
-
+- db.foo.find({x: {$eq: 700001}}).explain()
 
 #### Indexing
+- Regular(B-Tree)
+- Geo Index
+- Text Index
+- Hashed Index(Support Sharding)
+- TTL(Time to live)
+
+#### Create Index
+- db.foo.ensureIndex(keys, options)
+- keys:- Which fields?? In what Order?? Geo/Text
+- options:- Name? Build now? Unique, Sparse? TTL? Language
+- `db.animal.ensureIndex({name: 1})` // Indexing the fields
+- `db.animal.ensureIndex({name: 1}, {unique: true})` // Indexing the fields and unique is true
+- `db.animal.ensureIndex({name: 1}, {sparse: true})` // Only Indexes those documents which has entry  
+- `db.animal.ensureIndex({"info.color": 1})` // Indexing nested fields
+- `db.animal.ensureIndex({"tags": 1})` // where tags an array field
+- `db.animal.ensureIndex({"tags": 1}, {background: true})` // built the index in the background
+- `db.animal.ensureIndex({"tags": 1}, {name: "index_name"})` // Index name
+
+#### Get Indexes
+- db.animal.getIndexes()
+
+#### DropIndex
+db.animal.dropIndex('name_1')

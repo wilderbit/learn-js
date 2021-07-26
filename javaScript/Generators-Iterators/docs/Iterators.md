@@ -57,3 +57,6 @@ for (const [x, y] of map) {
 Key 1 and Value 1
 Key 2 and Value 2
 ```
+
+## json-server
+```npx json-server --watch ./src/db.json --port 3001```

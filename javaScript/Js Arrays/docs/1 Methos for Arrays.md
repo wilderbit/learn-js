@@ -80,3 +80,23 @@ const mon = new Map();
 let keys = mon.keys();
 let values = mon.values();
 ```
+
+#### Typed arrays
+- Array-like objects that provide a mechanism for accessing raw binary data.
+- Accessing raw binary data
+- Faster performance
+- Strictly controlled data
+- APIs that support typed arrays
+
+#### Creating Typed Array Buffer
+
+```js
+let testBuffer = new ArrayBuffer(16); // Array of 16 Bytes
+let view1 = new Int8Array(testBuffer); // Range between -128 to 127
+view1[0] = 32;
+
+let view2 = new DataView(testBuffer); // Generic Data Buffer
+view2.setInt8(2, 43) // Buffer is same to at second position it will update the 43
+
+let num = view2.getInt8(2);
+```

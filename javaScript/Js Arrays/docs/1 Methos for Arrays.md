@@ -26,3 +26,38 @@ function findOver1000() {
 ```
 
 ## Working with Sets
+- Two type of Sets:- Set, and WeakSet
+- Sets enable you to store unique values of any type, whether primitive values or object references.
+
+#### Adding and removing values to Set
+
+```js
+let m = new Set(); // new Set([1, 2, 3])
+m.add(1);
+m.add(2);
+let setSize = m.size;
+m.delete(1)
+```
+
+#### Iterating a Set 
+```js
+let m = new Set([1,2,3,4,5,6]);
+
+for(let x of m) {
+    console.log(x);
+}
+```
+
+#### WeakSet
+- Only contain objects
+- NO primitive data types
+- Objects are held "weakly"
+- Not Iterable
+- No access to size property
+- Garbage collected
+
+```js
+let category = new WeakSet();
+category.add('Hiking'); // Error because this is not an object
+category.add({category: 'Hiking'});
+```

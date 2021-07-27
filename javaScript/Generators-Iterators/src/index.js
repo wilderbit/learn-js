@@ -68,3 +68,43 @@
 //     }
 //     readline.close();
 // });
+
+// Generator
+// -----------------------
+
+function *generateTime() {
+    let ts = Date.now();
+    console.log(`original ts: ${ts}`)
+    yield ts;
+    console.log("Next Yield")
+    let x = yield;
+    console.log(`x: ${x}`)
+
+}
+
+// generateTime() // It won't run the code
+//
+// const it = generateTime();
+// let ts = it.next();
+// console.log(`original ts: ${JSON.stringify(ts)}`)
+// it.next();
+// it.next(5);
+
+// for (const val of it) {
+//     console.log('H' + val)
+// }
+
+
+function *gen1() {
+    yield 1;
+    yield 2;
+}
+
+function *gen2() {
+    yield *gen1();
+    yield 3
+}
+
+const it = gen2();
+console.log(it.next())
+console.log(it.next())

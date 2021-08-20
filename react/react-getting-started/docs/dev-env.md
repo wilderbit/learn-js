@@ -19,6 +19,8 @@
 12. `mkdir src/components`
 13. `mkdir src/server`
 14. create a new file `babel.conf.js` 
+15. `@babel/core babel-loader @babel/preset-env @babel/preset-react @babel/plugin-proposal-class-properties @babel/plugin-syntax-dynamic-import css-loader style-loader html-webpack-plugin webpack webpack-dev-server webpack-cli -D`
+16. `react react-dom prop-types react-router-dom semantic-ui-react`
 ```js
 module.exports = {
   presets: ['@babel/preset-env', '@babel/preset-react'],

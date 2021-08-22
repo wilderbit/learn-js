@@ -4,6 +4,7 @@ import express from 'express';
 import { readFileSync } from 'fs';
 import { renderToString } from 'react-dom/server';
 import { App } from '../client/App'
+import {handleUpvotes} from '../shared/utility'
 
 
 const app = new express();
@@ -69,6 +70,12 @@ const data = {
 
 app.get('/data', async (_req, res) => {
     return res.send(data);
+})
+
+app.get('/vote/:answerId', async(req, res) => {
+    const {query, params} = req;
+    data.answers = handleUpvotes(data.answers, params.answerId, parseInt(query.increment));
+    return res.status(200).send("Ok");
 })
 
 app.get('/', (_req, res) => {

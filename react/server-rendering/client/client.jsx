@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {App} from "./App";
+import {handleUpvotes} from '../shared/utility'
 
 // ReactDOM.render(<App/>, document.querySelector("#Container"));
 
@@ -15,14 +16,9 @@ fetch("http://127.0.0.1:7777/data")
     })
 
 function updateVotes(answerId, count) {
-    state.answers = state.answers.map(answer =>
-        {
-            if(answer.answerId === answerId) {
-                return {...answer, upvotes: answer.upvotes + count}
-            }
-            return answer;
-        }
-    );
+    state.answers = handleUpvotes(state.answers, answerId, count);
+    fetch(`/vote/${answerId}?increment=${count}`)
+        .then(data => console.log(data));
     render();
 }
 

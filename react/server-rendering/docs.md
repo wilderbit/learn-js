@@ -12,3 +12,12 @@
 - Node utility which converts code from one language to another.
 - Define `.babelrc` file and Define JSX transform
 - Specify `npm start` script and Runs express server with `babel-node` 
+
+## Rehydration
+- The process of restoring interactivity and functionality to server rendered components
+- React running on client recognizes server output as React and binds to it
+- React instantly and seamlessly substitutes fully functional app for server-rendered facade.
+- Lightweight HTML, JS Libraries Needed
+- Fully Interactive
+- React and JavaScript must both be running on client's Device
+- High-performance updates based on changing state, interactions

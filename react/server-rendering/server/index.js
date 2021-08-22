@@ -67,14 +67,18 @@ const data = {
     }]
 }
 
+app.get('/data', async (_req, res) => {
+    return res.send(data);
+})
+
 app.get('/', (_req, res) => {
     let index = readFileSync('public/index.html', 'utf-8');
     const render = renderToString(<App {...data}/>)
     res.send(index.replace('{{render}}', render));
 });
 
+
+
 app.listen(7777, () => {
     console.log("server started")
 })
-
-
